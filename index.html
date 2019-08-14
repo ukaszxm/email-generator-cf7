@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="pl-PL" prefix="og: http://ogp.me/ns#">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>E-mail Generator v1.2</title>
+
+    <link type="text/css" rel="stylesheet" href="./css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/KBmodal.js"></script>
+    <link href="./css/KBmodal.css" rel="stylesheet">
+    <script src="./js/jscolor.js"></script>
+    <script src="./js/custom.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,700" rel="stylesheet">
+</head>
+<script>
+    var host = window.location.origin+window.location.pathname;
+    function homeUrl(){
+        document.write(host);
+    }
+</script>
+<body>
+
+    <header class="pageHeader">
+        <div class="pageHeader__colorText">
+            <img id="showColorText" src="./images/icon-color-picker.png" alt="">
+        </div>
+        <div class="pageHeader__logo">
+            <a href=""><img src="./images/logo.png" alt=""></a>
+        </div>
+        <div class="pageHeader__addField">
+                <img id="showAddField" src="./images/icon-add-field.png" alt="">
+            </div>
+    </header>
+
+            
+            <div id="boxColors" class="setColorText setColorText__showSetColorText">
+
+                <div id="setColorBoxWrap" style="width: 100%">
+                    <div class="setColorText__wrapper">
+                        <div class="setColorText__menuHead">Tło</div>
+                        <div class="setColorText__content">
+                            <label>Kolor tła:</label>
+                            <!-- <input type="text" onkeyup="DelayedSubmission()" value="#191919" id="getBGColor"> -->
+                            <input type="text" class="jscolor" onkeyup="DelayedSubmission()" onchange="bgcolor()" value="#191919" id="getBGColor">
+            
+                            <label>Adres URL obrazka tła:</label>
+                            <input type="text" onkeyup="DelayedSubmission()" value="./images/bg.png" id="getBGImg">
+        
+                            <label>Powtarzalność tła:</label>
+                            <div class="switcher switcher--bgrepeat">
+                                <div class="switcher__content">
+                                    <div id="bgrepeat" class="switcher__circle switcher__circle--left">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <label>Rozmiar tła:</label>
+                            <div class="switcher switcher--bgsize">
+                                <div class="switcher__content">
+                                    <div id="bgsize" class="switcher__circle switcher__circle--center">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <label>Pozycja tła oś-X:</label>
+                            <div class="switcher switcher--positionX">
+                                <div class="switcher__content">
+                                    <div id="bgpositionX" class="switcher__circle switcher__circle--center">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <label>Pozycja tła oś-Y:</label>
+                            <div class="switcher switcher--positionY">
+                                <div class="switcher__content">
+                                    <div id="bgpositionY" class="switcher__circle switcher__circle--center">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setColorText__wrapper">
+                        <div class="setColorText__menuHead" style="">Nagłowek</div>
+                        <div class="setColorText__content">
+                            <label>Kolor tła nagłówka:</label>
+                            <!-- <input type="text" onkeyup="DelayedSubmission()" value="#000" id="getheaderColor"> -->
+                            <input type="text" class="jscolor" onkeyup="DelayedSubmission()" onchange="header()" value="#000" id="getheaderColor">
+            
+                            <label>Adres URL logo:</label>
+                            <input type="text" onkeyup="DelayedSubmission()" value="./images/logo.png" id="getheaderLogo">
+                        </div>
+                    </div>
+                    
+                    <div class="setColorText__wrapper">
+                        <div class="setColorText__menuHead" style="">Treść</div>
+                        <div class="setColorText__content">
+                            <label>Kolor nagłówków:</label>
+                            <!-- <input type="text" onkeyup="DelayedSubmission()" value="#191919" id="getheadColor"> -->
+                            <input type="text" class="jscolor" onkeyup="DelayedSubmission()" onchange="headTitle()" value="#191919" id="getheadColor">
+
+                            <label>Wielkość czcionki nagłówków:</label>
+                            <input id="mainfzHead" type="range" value="22" min="8" max="50" onchange="rangevalue.value=value">
+                            <output id="rangevalue">22</output>
+
+                            <label>Kolor treści:</label>
+                            <!-- <input type="text" onkeyup="DelayedSubmission()" value="#191919" id="getcontentTextColor"> -->
+                            <input type="text" class="jscolor" onkeyup="DelayedSubmission()" onchange="contentTxt()" value="#191919" id="getcontentTextColor">
+
+                            <label>Wielkość czcionki treści:</label>
+                            <input id="mainfzContent" type="range" value="18" min="8" max="50" onchange="mainfzContentRange.value=value">
+                            <output id="mainfzContentRange">18</output>
+            
+                            <label>Kolor tła contentu:</label>
+                            <!-- <input type="text" onkeyup="DelayedSubmission()" value="#ffffff" id="getContentColor"> -->
+                            <input type="text" class="jscolor" onkeyup="DelayedSubmission()" onchange="contentBG()" value="#ffffff" id="getContentColor">
+
+                            <label>Szerokość contentu:</label>
+                            <input id="mainWidthContent" type="range" value="600" min="500" max="1000" onchange="mainWidthContentRange.value=value" step="10">
+                            <output class="widthContent" id="mainWidthContentRange">600</output>
+                        </div>
+                    </div>
+                    
+                    <div class="setColorText__wrapper">
+                        <div class="setColorText__menuHead">Informacje Kontaktowe</div>
+                        <div class="setColorText__content">
+                            <label>Kolor tła:</label>
+                            <!-- <input type="text" onkeyup="DelayedSubmission()" value="#323232" id="getFooterColor"> -->
+                            <input type="text" class="jscolor" onkeyup="DelayedSubmission()" onchange="getFooterColor()" value="#323232" id="getFooterColor">
+
+                            <label>Kolor nagłówków:</label>
+                            <!-- <input type="text" onkeyup="DelayedSubmission()" value="#ffffff" id="getFooterHeadColorText"> -->
+                            <input type="text" class="jscolor" onkeyup="DelayedSubmission()" onchange="getFooterHeadColorText()" value="#ffffff" id="getFooterHeadColorText">
+
+                            <label>Wielkość czcionki nagłówków:</label>
+                            <input id="footerfzHead" type="range" value="22" min="8" max="50" onchange="footerrangevalue.value=value">
+                            <output id="footerrangevalue">22</output>
+
+                            <label>Kolor ikonki Adres:</label>
+                            <div class="switcher switcher--iconFooter">
+                                <div class="switcher__content">
+                                    <div id="iconAdress" class="switcher__circle switcher__circle--left">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <label>Kolor ikonki Kontakt:</label>
+                            <div class="switcher switcher--iconFooter">
+                                <div class="switcher__content">
+                                    <div id="iconPhone" class="switcher__circle switcher__circle--left">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <label>Kolor tekstów:</label>
+                            <!-- <input type="text" onkeyup="DelayedSubmission()" value="#ffffff" id="getFooterColorText"> -->
+                            <input type="text" class="jscolor" onkeyup="DelayedSubmission()" onchange="getFooterColorText()" value="#ffffff" id="getFooterColorText">
+
+                            <label>Wielkość czcionki tekstów:</label>
+                            <input id="footerfzContent" type="range" value="18" min="8" max="50" onchange="footerContentrangevalue.value=value">
+                            <output id="footerContentrangevalue">18</output>
+            
+                            <label>Kolor obramowania:</label>
+                            <input type="text" onkeyup="DelayedSubmission()" value="#424242" id="getFooterColorBorder">
+                            <!-- <input type="text" class="jscolor" onkeyup="DelayedSubmission()" onchange="getFooterColorBorder()" value="#424242" id="getFooterColorBorder"> -->
+            
+                            <label>Tekst kolumny Adres:</label>
+                            <textarea rows="8" onkeyup="DelayedSubmission()" cols="100" value="Nowy Dwór Mazowiecki <br> ul. Mazowiecka 11/5 <br>Pracujemy od 8.00 do 16.00" id="getTextFooterAdress">Nowy Dwór Mazowiecki <br> ul. Mazowiecka 1 <br>Pracujemy od 8.00 do 16.00</textarea>
+            
+                            <label>Tekst kolumny Kontakt:</label>
+                            <textarea rows="8" onkeyup="DelayedSubmission()" cols="100" value="Chcesz nawiązać kontakt? <br> (+48) 570 203 257 <br> E-mail: biuro@flexyweb.pl" id="getTextFooterContact">Chcesz nawiązać kontakt? <br> (+48) 789 789 789 <br> E-mail: biuro@flexyweb.pl</textarea>
+        
+                        </div>
+                    </div>
+
+                    <div class="setColorText__wrapper">
+                        <div class="setColorText__menuHead">Stopka</div>
+                        <div class="setColorText__content">
+                            <label>Kolor tła:</label>
+                            <!-- <input type="text" onkeyup="DelayedSubmission()" value="#000000" id="getFooterBackground"> -->
+                            <input type="text" class="jscolor" onkeyup="DelayedSubmission()" onchange="getFooterBackground()" value="#000000" id="getFooterBackground">
+
+                            <label>Treść linku strony www:</label>
+                            <input type="text" onkeyup="DelayedSubmission()" value="Flexyweb.pl" id="getHeadUrlFooter">
+            
+                            <label>Adres URL strony www:</label>
+                            <input type="text" onkeyup="DelayedSubmission()" value="https://email.flexyweb.pl" id="getURLFooter">
+
+                            <label>Kolor linku:</label>
+                            <!-- <input type="text" onkeyup="DelayedSubmission()" value="#ffffff" id="getFooterColorURL"> -->
+                            <input type="text" class="jscolor" onkeyup="DelayedSubmission()" onchange="getFooterColorURL()" value="#ffffff" id="getFooterColorURL">
+
+                        </div>
+                    </div>
+                    
+                    <!-- <input type="button" value="Zmień kolory" id="btnBG"> -->
+                </div>
+
+            </div>
+
+
+            
+            <div id="boxAddField" class="addFieldWrapper addFieldWrapper__showaddField">
+                <div id="buildyourform"></div>
+                
+                <input type="button" value="Dodaj pole formularza" class="add" id="add" />
+                <input type="button" value="Generuj kod HTML" class="add" id="preview" />
+            </div>
+
+
+            
+            <div id="demoView">
+
+                <div id="formView" style="padding: 150px 0; background-color: #191919; background-image: url('./images/bg.png'); background-size: initial; background-repeat: repeat;">
+
+                    <div id="wrapperBox" style="width: 600px; margin: 0 auto;">
+
+                        
+                        <div id="topHeader" style="padding: 25px 0; width: 100%; background-color: #000;">
+                            <center><a href="http://email.flexyweb.pl" id="logoLink"><img id="headerLogo" src="./images/logo.png" alt="Logo Site"></a></center>
+                        </div>
+
+                        
+                        <div id="mainContent" style="padding: 20px 15px; background-color: #ffffff;">
+
+                        </div>
+
+                        
+                        <div id="footer" style="background-color: #323232; display: inline-block; width: 100%;">
+                            <div id="footerLeftBox" style="width: 49.9%; float: left; border-right: 1px solid; border-color: #424242;">
+                                <center>
+                                    <div style="display: inline-block; margin: 15px 0;">
+                                        <img id="FootericonPin" src="./images/white-pin.png" style="display: inline-block; float: left; margin-right: 15px;" alt="">
+                                        <h3 class="footerHeadColor" style="display: table-cell; vertical-align: middle; height: 45px; font-size: 22px; text-align: center; color: #ffffff;">Adres</h3>
+                                    </div>
+                                </center>
+                                <p class="contentFooterTxt" id="contentFooterAdress" style="word-break: break-all; color: #ffffff; padding: 0 15px;">Nowy Dwór Mazowiecki <br> ul. Mazowiecka 1 <br>Pracujemy od 8.00 do 16.00</p>
+                            </div>
+                            <div id="footerRightBox" style="width: 49.9%; float: left; border-color: #424242;">
+                                <center>
+                                    <div style="display: inline-block; margin: 15px 0;">
+                                        <img id="FootericonPhone" src="./images/white-phone.png" style="display: inline-block; float: left; margin-right: 15px;" alt="">
+                                        <h3 class="footerHeadColor" style="display: table-cell; vertical-align: middle; height: 45px; font-size: 22px; text-align: center; color: #ffffff;">Kontakt</h3>
+                                    </div>
+                                </center>
+                                <p class="contentFooterTxt" id="contentFooterContact" style="word-break: break-all; color: #ffffff; padding: 0 15px;">Chcesz nawiązać kontakt? <br> (+48) 789 789 789 <br> E-mail: biuro@flexyweb.pl</p>
+                            </div>
+                            <div id="contentFooterLink">
+                                <a style="border-top: 1px solid; border-color: #424242; padding: 15px 0px; display: inline-block; width: 100%; text-align: center; color: #ffffff; background: #000000" id="linkFooterInner" href="https://email.flexyweb.pl">Flexyweb.pl</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <footer class="footer">
+                    Copyright Ⓒ 2018 <a href="http://email.flexyweb.pl" target="_blank">Flexyweb.pl</a>. Wszelkie prawa zastrzeżone.
+            </footer>
+
+
+<script>
+    // Tło
+    function bgcolor(jscolor) {
+        var color = $("#getBGColor").val();
+
+        $("#formView").css({
+            'background-color': color,
+        });
+    }
+
+    function header(jscolor) {
+        var color = $("#getheaderColor").val();
+        
+        $("#topHeader").css({
+            'background-color': color,
+        });
+    }
+
+    // Treść
+    function headTitle(jscolor) {
+        var color = $("#getheadColor").val();
+        
+        $(".headColor").css({
+            'color': color,
+        });
+    }
+
+    function contentTxt(jscolor) {
+        var color = $("#getcontentTextColor").val();
+        
+        $(".mainContentText").css({
+            'color': color,
+        });
+    }
+
+    function contentBG(jscolor) {
+        var color = $("#getContentColor").val();
+        
+        $("#mainContent").css({
+            'background-color': color,
+        });
+    }
+    // Informacje Kontaktowe
+    function getFooterColor(jscolor) {
+        var color = $("#getFooterColor").val();
+        
+        $("#footer").css({
+            'background-color': color,
+        });
+    }
+    function getFooterHeadColorText(jscolor) {
+        var color = $("#getFooterHeadColorText").val();
+        
+        $(".footerHeadColor").css({
+            'color': color,
+        });
+    }
+    function getFooterColorText(jscolor) {
+        var color = $("#getFooterColorText").val();
+        
+        $(".contentFooterTxt").css({
+            'color': color,
+        });
+    }
+    // Stopka
+    function getFooterBackground(jscolor) {
+        var color = $("#getFooterBackground").val();
+        
+        $("#contentFooterLink a").css({
+            'background-color': color,
+        });
+    }
+    function getFooterColorURL(jscolor) {
+        var color = $("#getFooterColorURL").val();
+        
+        $("#contentFooterLink a").css({
+            'color': color,
+        });
+    }
+</script>
+</body>
+</html>
+
+
+
+
+<!-- Color Picker -->
+
+<!-- <script src="./js/jscolor.js"></script>
+    <script>
+        function bgcolor(jscolor) {
+            //document.getElementById('rect').style.backgroundColor = '#' + jscolor
+            $("#demoView").css({
+                'background-color':  '#' + jscolor,
+            });
+        }
+    </script>
+<input class="jscolor" onchange="bgcolor(this.jscolor)" value="ffffff"> -->
